@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>قسم الأشعة</title>
+
+    <!-- icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!-- toastr CSS -->
+    <link rel="stylesheet" href="./assets/css/toastr.min.css" />
+
+    <!-- Bootstrap Core CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <!-- custom bootstrap -->
+    <link rel="stylesheet" href="./assets/css/custom-bootstrap.min.css" />
+
+    <!-- MetisMenu CSS -->
+    <link href="./assets/js/metisMenu/metisMenu.min.css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link href="./assets/css/sb-admin-2.css" rel="stylesheet" />
+    <!-- Custom Fonts -->
+    <link
+      href="./assets/fonts/font-awesome/css/font-awesome.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css"
+      type="text/css"
+    />
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <!-- top nav -->
+    <nav class="navbar border-bottom bg-light">
+      <div class="container-fluid">
+        <div class="d-flex align-items-center">
+          <button
+            type="button"
+            class="btn d-md-none d-flex justify-content-center align-content-center"
+            onclick="toggleSideBar()"
+            data-bs-toggle="button"
+          >
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <a class="navbar-brand" href="#">test</a>
+        </div>
+        <div class="dropdown">
+          <button
+            class="btn btn-secondary dropdown-toggle"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Dropdown button
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="d-flex w-100 m-0">
+      <!-- sidebar -->
+      <div class="bg-light p-0 shadow sidebar flex-shrink-0">
+        <ul class="list-group list-group-flush p-0 position-relative">
+          <li class="list-group-item">
+            <div class="d-flex gap-3 align-items-center">
+              <i class="fa-solid fa-gauge"></i>
+              <p class="mb-0">اللوحة الرئيسية</p>
+            </div>
+          </li>
+          <li
+            data-bs-toggle="collapse"
+            data-bs-target="#reports-collapse"
+            aria-expanded="false"
+            class="list-group-item dropdown-collapse"
+          >
+            <div
+              class="d-flex w-100 justify-content-between align-items-center"
+            >
+              <div class="d-flex gap-3 align-items-center">
+                <i class="fa-solid fa-box-archive"></i>
+                <p class="mb-0">قسم التقارير الشعاعية</p>
+              </div>
+              <i class="fa-solid fa-angle-left dropdown-collapse-arrow"></i>
+            </div>
+            <div class="collapse" id="reports-collapse">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                <li>
+                  <a
+                    href="#"
+                    class="link-body-emphasis gap-3 align-items-center w-100 text-primary d-inline-flex text-decoration-none rounded pt-3"
+                    ><i class="fa-solid fa-file"></i
+                    ><span>تقارير شعاعية معلقة</span></a
+                  >
+                </li>
+              </ul>
+            </div>
+          </li>
+          <button
+            onclick="toggleSideBar()"
+            class="d-md-none collapse-sidebar btn border btn-light position-absolute start-0 translate-middle z-3 rounded-circle"
+          >
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </ul>
+      </div>
+      <!-- page container -->
+      <div class="p-4 w-100">
+        <!-- <form id="uploadForm">
+          <label
+            class="file-uploader mx-auto rounded-3 position-relative border-3 border-primary-subtle w-75 d-flex justify-content-center align-items-center p-4"
+            for="fileUploader"
+          >
+            <p
+              class="file-uploader-title text-primary position-absolute m-0 top-50 start-50 translate-middle"
+            >
+              upload your file
+            </p>
+            <input
+              id="fileUploader"
+              class="opacity-0 position-absolute"
+              type="file"
+            />
+          </label>
+          <div class="row m-0 mt-3 justify-content-center">
+            <button type="submit" class="col-7 btn btn-primary">
+              upload selected file
+            </button>
+          </div>
+        </form> -->
+        <!-- just set your api in action -->
+        <form
+          action="upload.php"
+          method="post"
+          class="dropzone border-primary rounded-3"
+          id="demo-upload"
+        >
+          <p class="dz-message needsclick mb-0">يرجى تحميل ملفاتك هنا</p>
+        </form>
+        <hr />
+        <div class="container">
+          <div class="row gallery"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./assets/js/toastr.min.js"></script>
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+    <script>
+      console.log('dropzone:',new Dropzone());
+      Dropzone.options.demoUpload = {
+        // Configuration options go here
+      };
+    </script>
+
+    <script>
+      $(document).ready(function () {
+        $("#uploadForm").submit(function (e) {
+          e.preventDefault();
+          let formData = new FormData(this);
+          $.ajax({
+            url: "upload.php", // specify the path to your upload PHP file
+            type: "POST",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+              // Handle response and display uploaded images
+              toastr["success"]("", "تم الترفيع بنجاح");
+              toastr.options = {
+                closeButton: true,
+                debug: false,
+                newestOnTop: true,
+                progressBar: true,
+                positionClass: "toast-top-right",
+                preventDuplicates: false,
+                showDuration: "300",
+                hideDuration: "1000",
+                timeOut: "5000",
+                extendedTimeOut: "1000",
+                showEasing: "swing",
+                hideEasing: "linear",
+                showMethod: "fadeIn",
+                hideMethod: "fadeOut",
+              };
+              displayUploadedImages(response);
+            },
+            error: function (error) {
+              toastr["error"]("", "حدث خطأ ما");
+              toastr.options = {
+                closeButton: true,
+                debug: false,
+                newestOnTop: true,
+                progressBar: true,
+                positionClass: "toast-top-right",
+                preventDuplicates: false,
+                showDuration: "300",
+                hideDuration: "1000",
+                timeOut: "5000",
+                extendedTimeOut: "1000",
+                showEasing: "swing",
+                hideEasing: "linear",
+                showMethod: "fadeIn",
+                hideMethod: "fadeOut",
+              };
+            },
+          });
+        });
+
+        function displayUploadedImages(response) {
+          console.log(response);
+          let images = JSON.parse(response);
+          const gallery = document.querySelector(".gallery");
+          //   let html = "";
+          gallery.innerHTML = "";
+          images.forEach(function (image) {
+            const card = `<div class="col-8 col-md-5 col-lg-4">
+                                <div class="card">
+                                    <img src="${image.path}" class="card-img-top" alt="..." />
+                                    <div class="card-body">
+                                        <h5 class="card-title">${image.date}</h5>
+                                        <a href="#" class="btn btn-outline-primary">Go somewhere</a>
+                                        <a href="#" class="btn btn-outline-secondary">Go somewhere</a>
+                                    </div>
+                                </div>
+                            </div>`;
+            gallery.innerHTML += card;
+            // html +=
+            //   '<img src="' +
+            //   image.path +
+            //   '" alt="' +
+            //   image.date +
+            //   '" style="max-width: 200px; margin: 10px;">';
+          });
+          //   $("#uploadedImages").html(html);
+          toastr["success"]("", "تم تحديث البيانات بنجاح");
+          toastr.options = {
+            closeButton: true,
+            debug: false,
+            newestOnTop: true,
+            progressBar: true,
+            positionClass: "toast-top-right",
+            preventDuplicates: false,
+            showDuration: "300",
+            hideDuration: "1000",
+            timeOut: "5000",
+            extendedTimeOut: "1000",
+            showEasing: "swing",
+            hideEasing: "linear",
+            showMethod: "fadeIn",
+            hideMethod: "fadeOut",
+          };
+        }
+      });
+    </script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="./assets/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="./assets/js/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="./assets/js/sb-admin-2.js"></script>
+    <script src="./assets/js/jquery.validate.min.js"></script>
+  </body>
+</html>
